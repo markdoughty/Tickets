@@ -11,7 +11,7 @@ namespace Tickets
         private double _Price;
         private string _ConcertName;
         private string _Seat;
-        private int _ID;
+        private string _ID;
 
         //properties
         public double Price
@@ -34,21 +34,21 @@ namespace Tickets
                     return _Seat; }
             set { _Seat = value; }
         }
-        public int ID
+        public string ID
         {
             get { return _ID; }
             private set { _ID = value; }
         }
         //Constructors
         //
-        public ConcertTicket(int P, string cn, string s, int id )
+        public ConcertTicket(int P, string cn, string s, string id )
         {
             Price = P;
             ConcertName = cn;
             Seat = s;
             ID = id;
         }
-        public ConcertTicket(int P, string cn, int id)
+        public ConcertTicket(int P, string cn, string id)
         {
             Price = P;
             ConcertName = cn;
@@ -58,13 +58,13 @@ namespace Tickets
         //Methods
        public string OutputStatus()
         {
-            string output = ConcertName + " : " + String.Format("{0:C}", _Price) + "\n Seat: " + Seat + "\n Ticket Holder ID: " + ID;
+            string output = ConcertName + " : " + String.Format("{0:C}", _Price) + "\nSeat: " + Seat + "\nTicket Holder ID: " + ID + "\n";
             return output;
         }
 
         public string OutputStatus(int userid)
         {
-            string output = ConcertName + " : " + String.Format("{0:C}", _Price) + "\n Seat: " + Seat + "\n Ticket Holder ID: " + ID + "\n Requested by: " + userid;
+            string output = ConcertName + " : " + String.Format("{0:C}", _Price) + "\nSeat: " + Seat + "\nTicket Holder ID: " + ID + "\nRequested by: " + userid + "\n";
             return output;
         }
     }
