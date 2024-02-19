@@ -43,10 +43,10 @@ namespace Tickets
         //
         public ConcertTicket(int P, string cn, string s, string id )
         {
-            Price = P;
-            ConcertName = cn;
-            Seat = s;
-            ID = id;
+                Price = P;
+                ConcertName = cn;
+                Seat = s;
+                ID = id;
         }
         public ConcertTicket(int P, string cn, string id)
         {
@@ -67,5 +67,7 @@ namespace Tickets
             string output = ConcertName + " : " + String.Format("{0:C}", _Price) + "\nSeat: " + Seat + "\nTicket Holder ID: " + ID + "\nRequested by: " + userid + "\n";
             return output;
         }
+
+ 
     }
 }

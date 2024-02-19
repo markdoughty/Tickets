@@ -10,11 +10,25 @@ namespace Tickets
     {
         static void Main(string[] args)
         {
+          
             ConcertTicket ct1 = new ConcertTicket(40, "The Band", "A1", "Amy");
             ConcertTicket ct2 = new ConcertTicket(10, "The Band", "Bill");
 
-            Console.WriteLine(ct1.OutputStatus());
-            Console.WriteLine(ct2.OutputStatus(1234));
+
+            Concert NewConcert = new Concert("The Band");
+
+            try
+            {
+                NewConcert.AddConcertTicket(ct1);
+                NewConcert.AddConcertTicket(ct2);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            NewConcert.OutputAllSeats();
+
 
         }
     }
