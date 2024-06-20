@@ -35,7 +35,7 @@ namespace Tickets
                 concert.Add(ct);
             }
         }
-
+        //Method to output sold seats
         public void OutputAllSeats()
         {
             foreach (ConcertTicket ct in concert)
