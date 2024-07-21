@@ -1,26 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Tickets
 {
     internal class Concert
     {
-        private string _BandName;
+        private string _bandName;
+        
         //properties
         public string BandName
         {
-            get { return _BandName; }
-            set { _BandName = value; }
+            get { return bandName; }
+            set { _bandName = value; }
         }
 
-        List<ConcertTicket> concert;
+        private List<ConcertTicket> _concertTickets;
+
+        //Constructors
         public Concert(string name)
         {
             BandName = name;
-            concert = new List<ConcertTicket>();
+            _concertTickets = new List<ConcertTicket>();
         }
 
         //methods
@@ -28,20 +29,42 @@ namespace Tickets
         {
             if (ct.ConcertName != BandName)
             {
-                throw new WrongConcertException("Sorry - this is the wrong concert");
+                throw new WrongConcertException($"Sorry - this is the wrong concert, this is {ct.ConcertName}");
+            }
+            if (ct == null)
+            {
+                throw new NullException("Sorry - concert ticket can't be null");
+            }
+            if (Bandname == null)
+            {
+                throw new InvalidOperationException("Sorry - Bandname is not set");
             }
             else
             {
-                concert.Add(ct);
+                _concertTickets.Add(ct);
             }
         }
 
         public void OutputAllSeats()
         {
-            foreach (ConcertTicket ct in concert)
+            if(_concertTickets == null || _concertTickets.count == 0)
             {
+                Console.WriteLine("No concert tickets available.");
+                return;
+            }
+            foreach (ConcertTicket ct in _concertTickets)
+            {
+                if(ct == null)
+                {
+                    Console.writeline("Error: Found a null ticket in the list.")
+                    continue;
+                }
                 Console.WriteLine(ct.OutputStatus());
             }
         }
+    }
+    internal class WrongConcertException:Exception
+    {
+        public WrongConcertException(string message): base (message) { }
     }
 }
