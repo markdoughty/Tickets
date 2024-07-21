@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+//The code is minimally commented. While the class and method names are self-explanatory, additional comments would improve readability and maintainability.
 namespace Tickets
 {
     internal class Concert
