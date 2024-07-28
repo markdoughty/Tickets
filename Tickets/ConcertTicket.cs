@@ -26,6 +26,7 @@ namespace Tickets
             set { _ConcertName = value; }
 
         }
+        //set property with some logic
         public string Seat
         {
             get { if (_Seat == null)

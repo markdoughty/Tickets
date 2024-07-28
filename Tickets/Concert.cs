@@ -35,7 +35,7 @@ namespace Tickets
                 concert.Add(ct);
             }
         }
-
+        
         public void OutputAllSeats()
         {
             foreach (ConcertTicket ct in concert)
