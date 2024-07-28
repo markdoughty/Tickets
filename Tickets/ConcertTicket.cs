@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
 
 namespace Tickets
 {
@@ -13,7 +9,7 @@ namespace Tickets
         private string _Seat;
         private string _ID;
 
-        //properties
+        // Properties
         public double Price
         {
             get { return _Price; }
@@ -24,50 +20,49 @@ namespace Tickets
         {
             get { return _ConcertName; }
             set { _ConcertName = value; }
-
         }
+
         public string Seat
         {
-            get { if (_Seat == null)
-                    return "No Seat Allocated";
-                else
-                    return _Seat; }
+            get 
+            { 
+                return _Seat ?? "No Seat Allocated"; 
+            }
             set { _Seat = value; }
         }
+
         public string ID
         {
             get { return _ID; }
             private set { _ID = value; }
         }
-        //Constructors
-        //
-        public ConcertTicket(int P, string cn, string s, string id )
+
+        // Constructors
+        public ConcertTicket(double price, string concertName, string seat, string id)
         {
-                Price = P;
-                ConcertName = cn;
-                Seat = s;
-                ID = id;
-        }
-        public ConcertTicket(int P, string cn, string id)
-        {
-            Price = P;
-            ConcertName = cn;
+            Price = price;
+            ConcertName = concertName;
+            Seat = seat;
             ID = id;
         }
 
-        //Methods
-       public string OutputStatus()
+        public ConcertTicket(double price, string concertName, string id)
         {
-            string output = ConcertName + " : " + String.Format("{0:C}", _Price) + "\nSeat: " + Seat + "\nTicket Holder ID: " + ID + "\n";
-            return output;
+            Price = price;
+            ConcertName = concertName;
+            Seat = "No Seat Allocated"; // Assign default value
+            ID = id;
         }
 
-        public string OutputStatus(int userid)
+        // Methods
+        public string OutputStatus()
         {
-            string output = ConcertName + " : " + String.Format("{0:C}", _Price) + "\nSeat: " + Seat + "\nTicket Holder ID: " + ID + "\nRequested by: " + userid + "\n";
-            return output;
+            return $"{ConcertName} : {Price:C}\nSeat: {Seat}\nTicket Holder ID: {ID}\n";
         }
 
- 
+        public string OutputStatus(int userId)
+        {
+            return $"{ConcertName} : {Price:C}\nSeat: {Seat}\nTicket Holder ID: {ID}\nRequested by: {userId}\n";
+        }
     }
 }
