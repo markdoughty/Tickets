@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,39 +8,41 @@ namespace Tickets
 {
     internal class Concert
     {
-        private string _BandName;
+        private string _bandName; 
+        private List<ConcertTicket> ConcertTickets;
+
         //properties
         public string BandName
         {
-            get { return _BandName; }
-            set { _BandName = value; }
+            get => _bandName; //=> makes the code look better and more understandbale for future imrpovements
+            set => _bandName = value;
         }
 
-        List<ConcertTicket> concert;
-        public Concert(string name)
+
+        public Concert(string bandName)
         {
-            BandName = name;
-            concert = new List<ConcertTicket>();
+            BandName = bandName;
+            ConcertTickets = new List<ConcertTicket>();
         }
 
         //methods
-        public void AddConcertTicket(ConcertTicket ct)
+        //ct expanded into full variable for better understandability
+        public void AddConcertTicket(ConcertTicket concertTicket)
         {
-            if (ct.ConcertName != BandName)
+            if (concertTicket.ConcertName != BandName)
             {
                 throw new WrongConcertException("Sorry - this is the wrong concert");
             }
-            else
-            {
-                concert.Add(ct);
-            }
+
+            ConcertTickets.Add(concertTicket);
         }
 
         public void OutputAllSeats()
         {
-            foreach (ConcertTicket ct in concert)
+            //replaces the "ct"
+            foreach (var concertTicket in ConcertTickets)
             {
-                Console.WriteLine(ct.OutputStatus());
+                Console.WriteLine(concertTicket.OutputStatus());
             }
         }
     }
