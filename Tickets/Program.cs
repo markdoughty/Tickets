@@ -11,23 +11,22 @@ namespace Tickets
         static void Main(string[] args)
         {
           
-            ConcertTicket ct1 = new ConcertTicket(40, "The Band", "A1", "Amy");
-            ConcertTicket ct2 = new ConcertTicket(10, "The Band", "Bill");
+            ConcertTicket ConcertTicketInstance1 = new ConcertTicket(40, "The Band", "A1", "Amy");
+            ConcertTicket ConcertTicketInstance2 = new ConcertTicket(10, "The Band", "Bill");
 
-
-            Concert NewConcert = new Concert("The Band");
+            Concert ConcertInstance = new Concert("The Band");
 
             try
             {
-                NewConcert.AddConcertTicket(ct1);
-                NewConcert.AddConcertTicket(ct2);
+                ConcertInstance.AddConcertTicket(ConcertTicketInstance1);
+                ConcertInstance.AddConcertTicket(ConcertTicketInstance2);
             }
-            catch(Exception ex)
+            catch(Exception Ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(Ex.Message);
             }
 
-            NewConcert.OutputAllSeats();
+            ConcertInstance.OutputAllSeats();
 
 
         }

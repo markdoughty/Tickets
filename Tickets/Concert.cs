@@ -24,23 +24,23 @@ namespace Tickets
         }
 
         //methods
-        public void AddConcertTicket(ConcertTicket ct)
+        public void AddConcertTicket(ConcertTicket Ticket)
         {
-            if (ct.ConcertName != BandName)
+            if (Ticket.ConcertName != BandName)
             {
                 throw new WrongConcertException("Sorry - this is the wrong concert");
             }
             else
             {
-                concert.Add(ct);
+                concert.Add(Ticket);
             }
         }
 
         public void OutputAllSeats()
         {
-            foreach (ConcertTicket ct in concert)
+            foreach (ConcertTicket Ticket in concert)
             {
-                Console.WriteLine(ct.OutputStatus());
+                Console.WriteLine(Ticket.OutputStatus());
             }
         }
     }

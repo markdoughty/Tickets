@@ -37,35 +37,35 @@ namespace Tickets
         public string ID
         {
             get { return _ID; }
-            private set { _ID = value; }
+            set { _ID = value; }
         }
         //Constructors
         //
-        public ConcertTicket(int P, string cn, string s, string id )
+        public ConcertTicket(int SeatPrice, string Name, string ConcertSeat, string SeatID)
         {
-                Price = P;
-                ConcertName = cn;
-                Seat = s;
-                ID = id;
+            Price = SeatPrice;
+            ConcertName = Name;
+            Seat = ConcertSeat;
+            ID = SeatID;
         }
-        public ConcertTicket(int P, string cn, string id)
+        public ConcertTicket(int SeatPrice, string Name, string SeatID)
         {
-            Price = P;
-            ConcertName = cn;
-            ID = id;
+            Price = SeatPrice;
+            ConcertName = Name;
+            ID = SeatID;
         }
 
         //Methods
        public string OutputStatus()
         {
-            string output = ConcertName + " : " + String.Format("{0:C}", _Price) + "\nSeat: " + Seat + "\nTicket Holder ID: " + ID + "\n";
-            return output;
+            string Output = ConcertName + " : " + String.Format("{0:C}", _Price) + "\nSeat: " + Seat + "\nTicket Holder ID: " + ID + "\n";
+            return Output;
         }
 
-        public string OutputStatus(int userid)
+        public string OutputStatus(int UserID)
         {
-            string output = ConcertName + " : " + String.Format("{0:C}", _Price) + "\nSeat: " + Seat + "\nTicket Holder ID: " + ID + "\nRequested by: " + userid + "\n";
-            return output;
+            string Output = ConcertName + " : " + String.Format("{0:C}", _Price) + "\nSeat: " + Seat + "\nTicket Holder ID: " + ID + "\nRequested by: " + UserID + "\n";
+            return Output;
         }
 
  
