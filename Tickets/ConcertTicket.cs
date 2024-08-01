@@ -17,7 +17,12 @@ namespace Tickets
         public double Price
         {
             get { return _Price; }
-            set { _Price = value; }
+            set 
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException("Price can not be a negative integer");
+                _price= value;
+            }
         }
 
         public string ConcertName
@@ -37,7 +42,12 @@ namespace Tickets
         public string ID
         {
             get { return _ID; }
-            private set { _ID = value; }
+            private set 
+            { 
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("ID can not be empty");
+                _id= value;
+            }
         }
         //Constructors
         //
@@ -56,16 +66,23 @@ namespace Tickets
         }
 
         //Methods
-       public string OutputStatus()
+       public override string Tostring()
         {
-            string output = ConcertName + " : " + String.Format("{0:C}", _Price) + "\nSeat: " + Seat + "\nTicket Holder ID: " + ID + "\n";
-            return output;
+            StringBuilder output = new StringBuilder();
+           output.AppendLine($"{cn} : {P:C}");
+           output.AppendLine($"Seat: {s}");
+           output.AppendLine($"Ticket Holder ID: {id}");
+           return output.Tostring();
         }
 
-        public string OutputStatus(int userid)
+        public string ToString(int userid)
         {
-            string output = ConcertName + " : " + String.Format("{0:C}", _Price) + "\nSeat: " + Seat + "\nTicket Holder ID: " + ID + "\nRequested by: " + userid + "\n";
-            return output;
+            StringBuilder output= new StringBuilder();
+            output.AppendLine($"{cn} : {P:C}");
+            output.AppendLine($"Seat: {s}");
+            output.AppendLine($"Ticket Holder ID: {id}");
+            output.AppendLine($"Requested by: {userid}");
+            return output.ToString();
         }
 
  
