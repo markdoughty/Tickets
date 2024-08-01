@@ -22,9 +22,14 @@ namespace Tickets
                 NewConcert.AddConcertTicket(ct1);
                 NewConcert.AddConcertTicket(ct2);
             }
-            catch(Exception ex)
+            catch(ArgumentException)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("Invalid Argument");
+            }
+
+            catch(XmlSchemaValidationException)
+            {
+                Console.WriteLine("Invalid Input");
             }
 
             NewConcert.OutputAllSeats();
