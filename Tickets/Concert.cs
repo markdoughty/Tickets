@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +8,9 @@ namespace Tickets
 {
     internal class Concert
     {
+
+        private static List<string> _TicketIds = new List<string>(); //a list of ticket ids already added.
+
         private string _BandName;
         //properties
         public string BandName
@@ -30,9 +33,16 @@ namespace Tickets
             {
                 throw new WrongConcertException("Sorry - this is the wrong concert");
             }
+
+            if (_TicketIds.Contains(ct.ID))
+            {
+                throw new Exception("A ticket with this id has already been added.");
+            }
+
             else
             {
                 concert.Add(ct);
+                _TicketIds.Add(ct.ID);
             }
         }
 
